@@ -37,9 +37,11 @@ fn main()
     
         let mut it = user_input.trim().split_whitespace();
         
-        match it.next(){
-            Some(token) => user_token = token,
-            None => continue,
+        if let Option::Some(token) = it.next() {
+            user_token = token
+        } else {
+            println!("Failed to get token!");
+            continue;
         }
         
         let user_string: String = it.collect::<Vec<&str>>().join(" ");
